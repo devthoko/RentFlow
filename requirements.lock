@@ -37,6 +37,7 @@ pydantic_core==2.50.1
 pydyf==0.13.0
 pyee==14.0.0
 Pygments==2.21.0
+pypdf==6.20.1
 pyphen==0.18.1
 pytest==9.1.1
 pytest-cov==7.1.0

@@ -142,4 +142,8 @@ def create_app(config=None):
 
     from .web import register
     register(app)
+    from .document_routes import register as document_routes
+    document_routes(app)
+    from .admin import register as admin_routes
+    admin_routes(app)
     return app

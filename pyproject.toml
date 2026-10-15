@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 name = "rentflow"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = ["fastapi", "uvicorn", "sqlalchemy>=2.0", "alembic", "jinja2", "python-multipart", "itsdangerous", "argon2-cffi", "cryptography", "weasyprint", "pillow", "httpx", "email-validator", "defusedxml"]
+dependencies = ["fastapi", "uvicorn", "sqlalchemy>=2.0", "alembic", "jinja2", "python-multipart", "itsdangerous", "argon2-cffi", "cryptography", "weasyprint", "pillow", "httpx", "email-validator", "defusedxml", "pypdf"]
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov", "playwright"]
 [tool.setuptools.packages.find]
