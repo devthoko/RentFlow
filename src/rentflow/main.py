@@ -140,8 +140,6 @@ def create_app(config=None):
         csrf(request, await request.form()); request.session.clear()
         return redirect(request, '/login')
 
-    @app.get('/')
-    def dashboard(request: Request):
-        with Session(app.state.engine) as db: require_user(request, db)
-        return render(request, 'dashboard.html', orders=[])
+    from .web import register
+    register(app)
     return app
