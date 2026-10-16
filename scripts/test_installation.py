@@ -5,8 +5,11 @@ from pathlib import Path
 import httpx
 
 ROOT = Path("/opt/rentflow")
-PREFIX = Path("/opt/rentflow-install-test")
-DATA = Path("/var/lib/rentflow-install-test")
+NAME = os.environ.get("RF_INSTALL_TEST_NAME", "rentflow-install-test")
+if not re.fullmatch(r"rentflow-[a-z0-9-]+-test", NAME):
+    raise ValueError("Ungültiger Testname.")
+PREFIX = Path("/opt") / NAME
+DATA = Path("/var/lib") / NAME
 BASE = "http://127.0.0.1:18081"
 
 
@@ -56,9 +59,7 @@ def main():
         assert db.execute("SELECT count(*) FROM orders").fetchone()[0] == 0
     config = dict(
         line.split("=", 1)
-        for line in Path("/etc/rentflow-install-test/environment")
-        .read_text()
-        .splitlines()
+        for line in (Path("/etc") / NAME / "environment").read_text().splitlines()
     )
     client = httpx.Client(base_url=BASE, follow_redirects=True, timeout=60)
     r = client.post(

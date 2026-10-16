@@ -20,5 +20,4 @@ runtime/
 tools/
 _*.py
 artifacts/
-
 installation.json
