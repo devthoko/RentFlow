@@ -15,3 +15,10 @@ backups/
 build/
 dist/
 playwright-report/
+
+runtime/
+tools/
+_*.py
+artifacts/
+
+installation.json
