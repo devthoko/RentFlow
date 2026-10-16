@@ -79,6 +79,10 @@ def main():
     customer(client, "Vor dem Update")
     shell("bash", PREFIX / "backup.sh")
     archive = sorted((DATA / "backups").glob("*.tar.gz"))[-1]
+    response = client.get("/admin/backups/" + archive.name)
+    assert response.status_code == 200 and response.content[:2] == b"\x1f\x8b", (
+        "Root-Backup muss für den App-Administrator lesbar sein."
+    )
     with tempfile.TemporaryDirectory(prefix="rentflow-update-test-") as temp:
         release = Path(temp) / "release.tar.gz"
         files = shell(

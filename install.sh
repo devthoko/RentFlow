@@ -10,7 +10,7 @@ python3 - "$@" <<'PY'
 import argparse,hashlib,json,os,re,subprocess,tarfile,tempfile,urllib.request
 from pathlib import Path
 p=argparse.ArgumentParser(description='Geprüfte RentFlow-Version installieren')
-p.add_argument('--version',default='1.0.0-rc.1')
+p.add_argument('--version',default='1.0.0-rc.2')
 p.add_argument('--archive',help='Lokales Release-Archiv für isolierte Tests')
 p.add_argument('--sha256')
 p.add_argument('--isolated',action='store_true')

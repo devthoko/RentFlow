@@ -61,6 +61,10 @@ def backup(engine, config, destination=None):
                     archive.add(root / name, arcname=name, recursive=True)
             temporary.chmod(0o600)
             os.replace(temporary, target)
+    if os.geteuid() == 0 and destination is None:
+        owner = config.data.stat()
+        os.chown(folder, owner.st_uid, owner.st_gid)
+        os.chown(target, owner.st_uid, owner.st_gid)
     fd = os.open(target, os.O_RDONLY)
     try:
         os.fsync(fd)

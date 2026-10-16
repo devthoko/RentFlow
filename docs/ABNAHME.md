@@ -1,6 +1,6 @@
 # Abnahmeprotokoll
 
-Stand: 16.10.2026, Kandidat 1.0.0-rc.1. Alle hier aufgeführten ausführbaren Tests liefen direkt auf der gemeinsamen Ubuntu-26.04-LXC. Automatisierte Fachtests verwenden ausschließlich temporäre Datenbanken und Dateien.
+Stand: 16.10.2026, Kandidat 1.0.0-rc.2. Alle hier aufgeführten ausführbaren Tests liefen direkt auf der gemeinsamen Ubuntu-26.04-LXC. Automatisierte Fachtests verwenden ausschließlich temporäre Datenbanken und Dateien.
 
 ## Fachregeln und Oberfläche
 
