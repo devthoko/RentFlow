@@ -1,10 +1,10 @@
 # Abnahmeprotokoll
 
-Stand: 16.10.2026, Kandidat 1.0.0-rc.2. Alle hier aufgeführten ausführbaren Tests liefen direkt auf der gemeinsamen Ubuntu-26.04-LXC. Automatisierte Fachtests verwenden ausschließlich temporäre Datenbanken und Dateien.
+Stand: 16.10.2026, Version 1.0.0. Alle hier aufgeführten ausführbaren Tests liefen direkt auf der gemeinsamen Ubuntu-26.04-LXC. Automatisierte Fachtests verwenden ausschließlich temporäre Datenbanken und Dateien.
 
 ## Fachregeln und Oberfläche
 
-40 automatisierte Tests prüfen die 30 verlangten Pflichtfälle einschließlich:
+41 automatisierte Tests prüfen die 30 verlangten Pflichtfälle einschließlich:
 
 - Kunden ohne Auftrag, neuer Auftrag, Fortsetzen und Eventvalidierung.
 - Artikel, Pakete, freie Positionen, genaue Summen und eingefrorene Daten.
@@ -33,9 +33,12 @@ Die Python-Laufzeitabhängigkeiten wurden mit pip-audit geprüft: keine bekannte
 
 Der von GitHub heruntergeladene Bootstrap für 1.0.0-rc.2 wurde auf derselben LXC erneut mit separatem Benutzer, Diensten und Daten unter /opt/rentflow-final-test ausgeführt. Das durch das Manifest festgelegte Archiv des Commits 2fafe05de7f74078996049586d20c59fb1f521be wurde erfolgreich geprüft und installiert. Anschließend bestanden das simulierte Versionsupdate, der Restore sowie der Abruf eines per root erzeugten Backups durch den angemeldeten App-Administrator. Die DEV-Anwendung blieb unter Port 80 mit Version 1.0.0-rc.2 erreichbar. Sie enthält keine Testbenutzer oder Testaufträge.
 
-## Noch offene Freigabe
+## Freigabeumfang 1.0.0
 
-Der Entwicklungsauftrag verlangt vor Version 1.0.0 zusätzlich eine echte Neuinstallation auf einem frischen Ubuntu-Server. Diese wurde noch nicht durchgeführt. Für eine zusätzliche kurzlebige Testumgebung ist laut Auftrag vorherige Erlaubnis einzuholen. Bis dahin wird ausschließlich ein Release Candidate veröffentlicht.
+Der Auftraggeber hat den zusätzlichen Deployment-Test ausdrücklich abgewählt. Die Freigabe stützt sich auf die Fach- und Browsertests sowie die bereits erfolgreichen isolierten Installations-, Update- und Wiederherstellungstests auf der vorhandenen LXC. Die folgenden historischen Versuche sind keine erfolgreiche Neuinstallationsabnahme.
+
+Zusätzliche Absicherung: Bei parallelen Foto-Uploads bleibt das Übergabe-/Rücknahmeformular bis zum Ende aller laufenden Uploads gesperrt, auch gegen Absenden per Tastatur. Ein Chromium-Test prüft den Wettlauf, den Erhalt des ersten Fotos und die Freigabe mit Fehlermeldung nach einem fehlgeschlagenen zweiten Upload.
+
 
 SMTP und WebDAV wurden mit kontrollierten Transportantworten und Fehlersimulation geprüft. Ein produktiver Mailserver und Nextcloud-Zugang wurden nicht angegeben; deren konkrete Erreichbarkeit/Anmeldung muss nach Konfiguration mit Testmail bzw. Synchronisierung geprüft werden.
 

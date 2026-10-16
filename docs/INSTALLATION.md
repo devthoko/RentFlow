@@ -1,6 +1,6 @@
 # Installation einer festgelegten Version
 
-Der aktuelle Abnahmestand ist 1.0.0-rc.2. Die vollständige Freigabe als 1.0.0 wartet noch auf den vorgeschriebenen Test auf einem wirklich frischen Ubuntu-Server. Die bestehende DEV-/TEST-LXC sowie isolierte Verzeichnisse auf ihr ersetzen diesen Test nicht.
+Aktuelle Version: 1.0.0. Fach-, Browser-, Backup-, Restore- und isolierte Installationstests wurden auf der vorhandenen Ubuntu-26.04-LXC durchgeführt. Auf ausdrücklichen Wunsch des Auftraggebers wird auf einen zusätzlichen Deployment-Test auf einem frischen Betriebssystem verzichtet. Eine erfolgreiche Neuinstallation auf einem frischen Ubuntu-System wird daher nicht behauptet.
 
 Vorgesehen: Ubuntu LTS 24.04 oder 26.04, systemd, root, mindestens 2 CPU-Kerne, 2 GB RAM und 5 GB freien Speicher zuzüglich Archiv/Backups. Die bisherige Host-Abnahme lief auf Ubuntu 26.04. Dienste und Ports 80/8000 dürfen vor einer Standardinstallation nicht anderweitig belegt sein. Der Installer verweigert bestehende Zielverzeichnisse.
 
@@ -9,10 +9,10 @@ Vorgesehen: Ubuntu LTS 24.04 oder 26.04, systemd, root, mindestens 2 CPU-Kerne, 
 Als root ausführen (auf Systemen mit sudo kann dem äußeren bash-Befehl sudo vorangestellt werden):
 
 ~~~sh
-bash -c 'set -euo pipefail; apt-get update; apt-get install -y curl ca-certificates; curl -fsSL https://raw.githubusercontent.com/devthoko/RentFlow/main/install.sh | bash -s -- --version 1.0.0-rc.2'
+bash -c 'set -euo pipefail; apt-get update; apt-get install -y curl ca-certificates; curl -fsSL https://raw.githubusercontent.com/devthoko/RentFlow/main/install.sh | bash -s -- --version 1.0.0'
 ~~~
 
-Der Bootstrap lädt releases/1.0.0-rc.2.json, anschließend das Archiv des darin festgelegten Git-Commits und vergleicht dessen SHA-256 vor der Ausführung. Python-Pakete sind ebenfalls mit Versionen und Archiv-Hashes festgelegt. SQLite wird aus einem separat geprüften Quellarchiv erstellt. Das Bootstrap-Skript und das Manifest werden über GitHubs HTTPS-Verbindung vertraut; wer sie zusätzlich prüfen möchte, lädt install.sh zuerst herunter, prüft den Inhalt und führt die gespeicherte Datei aus.
+Der Bootstrap lädt releases/1.0.0.json, anschließend das Archiv des darin festgelegten Git-Commits und vergleicht dessen SHA-256 vor der Ausführung. Python-Pakete sind ebenfalls mit Versionen und Archiv-Hashes festgelegt. SQLite wird aus einem separat geprüften Quellarchiv erstellt. Das Bootstrap-Skript und das Manifest werden über GitHubs HTTPS-Verbindung vertraut; wer sie zusätzlich prüfen möchte, lädt install.sh zuerst herunter, prüft den Inhalt und führt die gespeicherte Datei aus.
 
 Der Installer richtet Systembenutzer, virtuelle Python-Umgebung, Datenverzeichnis, Migrationen, nginx, Anwendung, Versandtimer und täglichen Backup-Timer ein. Er endet mit Healthcheck, Adresse und einmaligem Einrichtungsschlüssel. Die Neuinstallation enthält keine Geschäftsdaten.
 
@@ -24,7 +24,7 @@ Bei einem künftig privaten Repository einen ausschließlich lesenden GitHub-Tok
 
 ~~~sh
 curl -fSL -H "Authorization: Bearer $GITHUB_TOKEN" https://raw.githubusercontent.com/devthoko/RentFlow/main/install.sh -o install.sh
-sudo --preserve-env=GITHUB_TOKEN bash install.sh --version 1.0.0-rc.2
+sudo --preserve-env=GITHUB_TOKEN bash install.sh --version 1.0.0
 ~~~
 
 Der Installer verwendet den Token nur für GitHub-Downloads; er schreibt ihn nicht in die Anwendungskonfiguration. Auf root-Sitzungen ist sudo nicht nötig.
