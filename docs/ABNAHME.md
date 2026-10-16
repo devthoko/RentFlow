@@ -38,3 +38,9 @@ Der von GitHub heruntergeladene Bootstrap für 1.0.0-rc.2 wurde auf derselben LX
 Der Entwicklungsauftrag verlangt vor Version 1.0.0 zusätzlich eine echte Neuinstallation auf einem frischen Ubuntu-Server. Diese wurde noch nicht durchgeführt. Für eine zusätzliche kurzlebige Testumgebung ist laut Auftrag vorherige Erlaubnis einzuholen. Bis dahin wird ausschließlich ein Release Candidate veröffentlicht.
 
 SMTP und WebDAV wurden mit kontrollierten Transportantworten und Fehlersimulation geprüft. Ein produktiver Mailserver und Nextcloud-Zugang wurden nicht angegeben; deren konkrete Erreichbarkeit/Anmeldung muss nach Konfiguration mit Testmail bzw. Synchronisierung geprüft werden.
+
+## Versuch einer frischen Ubuntu-Umgebung am 16.10.2026
+
+Nach Zustimmung wurde Ubuntu 26.04 per debootstrap aus dem offiziellen Ubuntu-Archiv in einer temporaeren Umgebung neu installiert. Der verschachtelte systemd-nspawn-Start scheiterte beim Mounten von /proc (Operation not permitted). Der vorgeschlagene Start ohne private Benutzerzuordnung wurde von der automatischen Freigabepruefung abgelehnt und nicht ausgefuehrt. Der veroeffentlichte RentFlow-Installer konnte deshalb in dieser Umgebung noch nicht gestartet werden; dies ist keine erfolgreiche Neuinstallationsabnahme.
+
+Die temporaere Rootfs, die eigene NAT-Tabelle und das veth-Paar wurden entfernt. IPv4-Forwarding wurde auf den vorherigen Wert 0 zurueckgesetzt. Der bestehende Dienst meldete danach health=ok, Version 1.0.0-rc.2. Die stabile Freigabe bleibt offen.
