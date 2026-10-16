@@ -144,7 +144,7 @@ def create_app(config=None):
     def health():
         with Session(app.state.engine) as db:
             db.execute(text("SELECT version_num FROM alembic_version")).scalar_one()
-        return {"status": "ok", "version": "1.0.0"}
+        return {"status": "ok", "version": "1.0.1"}
 
     @app.get("/setup")
     def setup_page(request: Request):

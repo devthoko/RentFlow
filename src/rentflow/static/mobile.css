@@ -1,0 +1,76 @@
+/* Shared navigation and touch layouts. Desktop keeps its sidebar. */
+.sidebar-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.navigation-content{display:flex;flex:1;flex-direction:column;min-height:0}
+.mobile-nav-toggle{display:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+main,.panel,.split>*{min-width:0}
+.panel,.pagehead{overflow-wrap:anywhere}
+.tablewrap{max-width:100%;overscroll-behavior-x:contain}
+.stepper{overscroll-behavior-x:contain;scroll-snap-type:x proximity}
+.stepper a{scroll-snap-align:center}
+@media screen and (max-width:1100px){
+ .sidebar{position:sticky;inset:auto;top:0;z-index:30;width:100%;padding:12px max(16px,env(safe-area-inset-right)) 12px max(16px,env(safe-area-inset-left));border-right:0;border-bottom:1px solid var(--border);max-height:85dvh;overflow-y:auto}
+ .sidebar-heading{flex-shrink:0}
+ .brand{font-size:21px}
+ .mobile-enhanced .mobile-nav-toggle{display:inline-flex;min-height:44px}
+ .mobile-enhanced .navigation-content{display:none}
+ .mobile-enhanced .sidebar.nav-open .navigation-content{display:flex}
+ .sidebar .nav-caption{display:none}
+ .sidebar nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;overflow:visible;margin-top:16px}
+ .sidebar nav a{min-height:48px;font-size:14px;white-space:normal;padding:10px 12px}
+ .sidebar-bottom{display:flex;flex-wrap:wrap;align-items:center;gap:16px;border-top:1px solid var(--border);margin-top:16px;padding-top:12px}
+ .sidebar-bottom .profile{margin:0;flex:1}
+ .sidebar-bottom .profile>div{min-width:0;overflow-wrap:anywhere}
+ .sidebar-bottom form{margin:0}
+ .sidebar-bottom .quiet{min-height:44px;padding:8px}
+ .workspace{margin-left:0}
+ .topbar{height:40px;padding:0 24px}
+ main{padding:24px}
+ .split{grid-template-columns:minmax(0,1fr)}
+ .summary{position:static}
+ .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ button,.button{min-height:44px}
+ input,select{min-height:44px}
+ input,select,textarea,label input,label select,label textarea{font-size:16px}
+ input[type=checkbox]{min-height:22px;width:22px;height:22px;vertical-align:middle}
+ label:has(input[type=checkbox]){min-height:44px;display:flex;align-items:center;gap:8px}
+ .signature{height:220px}
+ .tabs{overflow-x:auto}
+ .tabs a{flex-shrink:0;min-height:44px;display:flex;align-items:center}
+ .stepper a{min-width:112px;min-height:62px}
+ .tablewrap:focus-visible{outline-offset:2px}
+ .pdf{height:60dvh;min-height:280px}
+}
+@media screen and (max-width:600px){
+ main{padding:20px 14px}
+ .panel{padding:16px;border-radius:10px}
+ .topbar{padding:0 16px}
+ .topbar>span:first-child{font-size:8px;letter-spacing:.6px}
+ .sidebar nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sidebar-bottom .profile{flex-basis:100%;order:-1}
+ .sidebar-bottom{justify-content:space-between}
+ .pagehead{gap:14px;margin-bottom:20px}
+ .pagehead>div{min-width:0;width:100%}
+ h1{font-size:25px;letter-spacing:-.6px}
+ .grid2,.grid3{grid-template-columns:minmax(0,1fr);gap:0}
+ .grid4{gap:10px}
+ .stat strong{font-size:25px}
+ .actions{align-items:stretch}
+ .actions>.button,.actions>button,.actions>form{flex:1 1 150px}
+ .actions>form>button{width:100%}
+ button,.button{white-space:normal;text-align:center}
+ .rowform{display:flex;flex-wrap:wrap;gap:8px}
+ .rowform label{flex-basis:100%;margin-bottom:0}
+ .rowform button{margin-bottom:14px}
+ .signature{height:200px}
+ .pdf{height:48dvh}
+ td,th{padding:12px 10px}
+ .tablewrap table{min-width:480px}
+ .auth-wrap{padding:22px}
+ footer{padding:20px 16px calc(20px + env(safe-area-inset-bottom))}
+ .summary dl{grid-template-columns:minmax(0,1fr) auto}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{.mobile-nav-toggle{display:none}}
+
+button,a,input,select,summary{touch-action:manipulation}

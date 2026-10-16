@@ -1,10 +1,10 @@
 # Abnahmeprotokoll
 
-Stand: 16.10.2026, Version 1.0.0. Alle hier aufgeführten ausführbaren Tests liefen direkt auf der gemeinsamen Ubuntu-26.04-LXC. Automatisierte Fachtests verwenden ausschließlich temporäre Datenbanken und Dateien.
+Stand: 16.10.2026, Version 1.0.1. Alle hier aufgeführten ausführbaren Tests liefen direkt auf der gemeinsamen Ubuntu-26.04-LXC. Automatisierte Fachtests verwenden ausschließlich temporäre Datenbanken und Dateien.
 
 ## Fachregeln und Oberfläche
 
-41 automatisierte Tests prüfen die 30 verlangten Pflichtfälle einschließlich:
+42 automatisierte Tests prüfen die 30 verlangten Pflichtfälle einschließlich:
 
 - Kunden ohne Auftrag, neuer Auftrag, Fortsetzen und Eventvalidierung.
 - Artikel, Pakete, freie Positionen, genaue Summen und eingefrorene Daten.
@@ -49,3 +49,9 @@ Nach Zustimmung wurde Ubuntu 26.04 per debootstrap aus dem offiziellen Ubuntu-Ar
 Die temporaere Rootfs, die eigene NAT-Tabelle und das veth-Paar wurden entfernt. IPv4-Forwarding wurde auf den vorherigen Wert 0 zurueckgesetzt. Der bestehende Dienst meldete danach health=ok, Version 1.0.0-rc.2. Die stabile Freigabe bleibt offen.
 
 Erneuter Versuch nach ausdruecklicher Zustimmung: Auch systemd-nspawn mit --private-users=no scheiterte mit Operation not permitted beim /proc-Mount. Ein vorgeschalteter separater PID-/Mount-Namensraum aenderte das Ergebnis nicht. Die aeussere LXC verwendet selbst eine Benutzerzuordnung (UID 0 auf Host-UID 100000). Die genaue Kernel-/LXC-Ursache ist nicht abschliessend bestimmt. Rootfs und Testnetz wurden erneut entfernt, Forwarding auf 0 zurueckgesetzt. Fuer die verbleibende Neuinstallationsabnahme wird eine separat bootfaehige Ubuntu-LXC oder VM benoetigt.
+
+## Mobile Oberfläche 1.0.1
+
+Navigation auf Handy und Tablet als aufklappbares Menü einschließlich Profil, Abmeldung und Farbschema. Touch-Flächen ab 44 Pixel, 16-Pixel-Formularschrift, einspaltige Formulare auf Handys, innerhalb der Tabelle scrollbare breite Inhalte, größere Unterschriftsfläche und automatisch sichtbarer aktiver Auftragsschritt. Ohne JavaScript bleibt die Navigation sichtbar.
+
+Chromium prüft neun Ansichten bei 320, 390, 768, 820 und 1024 Pixeln ohne horizontalen Seitenüberlauf, Menübedienung, Escape und den Wechsel zurück zur Desktop-Navigation. Eine über native Chromium-Touch-Ereignisse gezeichnete Unterschrift wird gespeichert. Handy- und Tablet-Screenshots wurden visuell geprüft. Dies ist eine Browser-Emulation, kein Test auf physischen iOS-/Android-Geräten.
