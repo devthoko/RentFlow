@@ -29,6 +29,10 @@ Isolierte Installation auf derselben LXC mit separatem Systembenutzer, Konfigura
 
 Die Python-Laufzeitabhängigkeiten wurden mit pip-audit geprüft: keine bekannten Schwachstellen zum Prüfzeitpunkt. Das ist keine umfassende Sicherheitszertifizierung. HTTP-Sicherheitsheader, lokale Ressourcen, verschlüsselte SMTP-/WebDAV-Passwörter und sichere Uploads werden ergänzend eingesetzt.
 
+## Abnahme des veröffentlichten Installers
+
+Der von GitHub heruntergeladene Bootstrap für 1.0.0-rc.2 wurde auf derselben LXC erneut mit separatem Benutzer, Diensten und Daten unter /opt/rentflow-final-test ausgeführt. Das durch das Manifest festgelegte Archiv des Commits 2fafe05de7f74078996049586d20c59fb1f521be wurde erfolgreich geprüft und installiert. Anschließend bestanden das simulierte Versionsupdate, der Restore sowie der Abruf eines per root erzeugten Backups durch den angemeldeten App-Administrator. Die DEV-Anwendung blieb unter Port 80 mit Version 1.0.0-rc.2 erreichbar. Sie enthält keine Testbenutzer oder Testaufträge.
+
 ## Noch offene Freigabe
 
 Der Entwicklungsauftrag verlangt vor Version 1.0.0 zusätzlich eine echte Neuinstallation auf einem frischen Ubuntu-Server. Diese wurde noch nicht durchgeführt. Für eine zusätzliche kurzlebige Testumgebung ist laut Auftrag vorherige Erlaubnis einzuholen. Bis dahin wird ausschließlich ein Release Candidate veröffentlicht.
